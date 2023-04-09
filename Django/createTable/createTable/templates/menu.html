@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<form id="Ami">
+<select id="myselect">
+  <option value="">-- Select city -- </option>
+  <option value="paris">Paris</option>
+  <option value="london">London</option>
+  <option value="athens">Athens</option>
+  <option value="madrid">Madrid</option>
+</select>
+</form>
+
+
+<br/>
+<br>
+<button onclick="show();">Show selected value</button>
+</br>
+
+
+<script>
+  let show = () => {
+     let element = document.getElementById("Ami");
+     alert("Value = " + element.myselect.value);
+  }
+</script>
+
+        
+
+</body>
+</html>

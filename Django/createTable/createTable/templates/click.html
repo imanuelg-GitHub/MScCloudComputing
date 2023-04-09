@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Alert</h2>
+
+<h3>Show a file-select field which allows only one file to be chosen:</h3>
+<form action="" method="POST">
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+</form>
+
+
+<a id="dynamicLink" value=""> </a>
+
+
+<input type="submit" value="Please click to upload file" onclick="myFunction()"/>
+
+<input type="submit" value="Please click to upload file2" onclick="myFunction2()"/>
+
+<script>
+function myFunction() {
+ 
+  alert(document.getElementById("myfile").value); 
+  //const message = 'JS will\\, JS will, JS will rock you!';
+  //const result = message.replace('\\','\\\\');
+  //alert(result);
+  var token = "\\";
+  var newToken = "\\\\";
+  //var oldStr = "This is a test\\of the emergency broadcasting\\system.";
+  //newStr = oldStr.split(token).join(newToken);
+  //alert(newStr);
+  var newval = document.getElementById("myfile").value.split(token).join(newToken);
+  alert(newval);
+  var link = document.getElementById('dynamicLink'); 
+  link.value = newval;
+}
+
+
+function myFunction2() {
+   alert(document.getElementById("dynamicLink").value);
+}
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<select>
+<option value="United States Of America">USA</option>
+<option value="Canada">Canada</option>
+<option value="Japan">Japan</option>
+<option value="Germany">Germany</option> </select>
+<h2 style="display: inline; padding-left: 10px;"></h2>
+<script>
+	let selection = document.querySelector('select');
+	let result = document.querySelector('h2');
+	selection.addEventListener('change', () => 
+	{
+		result.innerText = selection.options[selection.selectedIndex].value;
+		console.log(selection.selectedIndex);
+	})  
+</script>

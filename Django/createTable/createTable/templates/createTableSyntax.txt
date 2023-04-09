@@ -1,0 +1,1 @@
+create table T1 (field1 Text, field2 Numeric, field3 Date);

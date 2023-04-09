@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic DropDown List | Javacodepoint 
+    </title>  
+  </head>
+  <h2 style="display: inline; padding-left: 10px;"></h2>
+  <body>    
+   
+   
+    <button onclick="dynamicDropdownList()">Create Dynamic Dropdown List</button> 
+    
+    <button onclick="generate()">Generate</button>
+    <br>
+    <br>
+    <div id="dropdown-container">
+    </div> 
+    <script>//country data in string array format
+      var countries = ["Australia","France","India","Japan","United States"];
+      let m = new Map();
+      for(var i=0;i<countries.length;i++)
+      {
+        m.set(countries[i], 0);
+      }
+
+      function myFieldName()
+      {
+        var input = document.createElement("input");
+        input.setAttribute("id","name");
+        input.setAttribute('placeholder', 'Enter field name');
+        document.body.appendChild(input)
+      }
+
+
+      // This method calls on button click
+      function dynamicDropdownList()
+      {
+        
+        var dropdown = document.createElement("select");
+        myFieldName();
+        for(var i=0;i<countries.length;i++)
+        {
+          var opt = document.createElement("option");
+          opt.text = countries[i];
+          opt.value = countries[i];
+          dropdown.options.add(opt);
+        } 
+
+        //Load the dynamically created dropdown in container
+        var container=document.getElementById("dropdown-container");
+        container.appendChild(dropdown);
+        
+        //var onchange = document.createElement("onchange"); 
+        //let result = document.querySelector('h2');
+        //dropdown-container.addEventListener("change", e => {alert(e.target.value);}) }
+        //container.addEventListener( "change", e => {alert(e.target.value);}) }
+        //dropdown-container.addEventListener("change", e => {result.innerText += e.target.value;}) 
+        dropdown-container.addEventListener("change", e => {m.set(e.target.value, (m.get(e.target.value))+1); console.log(m); }) 
+        //dropdown-container.addEventListener("change", function (event), e => {m.set(e.target.value, event.target.value); console.log(m); }) 
+        //document.querySelector('TEXTAREA').addEventListener('change', function (event) { alert(event.target.value); });
+
+        
+      }
+      function generate()
+      {
+         //for (t of m.values())
+         for (const [key, value] of m.entries())
+         {
+            if (value > 0)
+            {
+               var myStr = key + " " + value;
+               alert(myStr);
+            }
+         }
+      }
+    </script> 
+  </body>
+</html>

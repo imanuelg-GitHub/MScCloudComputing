@@ -1,0 +1,83 @@
+<! DOCTYPE html>  
+<html>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<head>   
+    <title>   
+         Get Selected Value in drop-down using jQuery  
+    </title>   
+    <style>   
+        h1 {   
+            color: green;  
+        }   
+        h5 {   
+            color: green;   
+        }   
+        h4 {   
+            color: green;   
+        }   
+        p {  
+        color: red;   
+        }  
+        .select {  
+        margin: 40px;  
+        width: 60%;   
+        height: 300px;   
+        padding: 30px;   
+        border: 2px solid green;   
+        }     
+body {  
+        background-color: lightblue;  
+        }  
+</style>  
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">  
+</script>  
+<script>  
+$(document).ready (function () {  
+    $("select.country").change (function () {  
+        var selectedCountry = $(this).children("option:selected").val();  
+        alert ("You have selected the country - " + selectedCountry);  
+    });  
+});  
+</script>  
+</head>  
+<body>  
+
+
+
+<select id="Country2" >
+<option value="United States Of America">USA</option>
+<option value="Canada">Canada</option>
+<option value="Japan">Japan</option>
+<option value="Germany">Germany</option> </select>
+<input type="submit" onclick="myFunction() ">
+<p id="x"></p>
+<script>
+function myFunction() {
+var x = document.getElementById("Country2").value;
+document.getElementById("x").innerHTML = x; }
+</script>
+<br/>
+<br/>
+
+
+
+
+
+<div class ="select">  
+<center>  
+<h1> Example 1 </h1>  
+<p> <b> Get Selected Value in drop-down using jQuery </b> </p>  
+<form action="#" method ="post" >  
+    <label> <h4> Select Country from drop-down list: </h4> <br> </label>  
+    <select class="country">  
+         <option value="usa"> United States </option>  
+         <option value="india"> India </option>  
+         <option value="uk"> United Kingdom </option>  
+<option value ="brazil"> Brazil </option>  
+         <option value ="germany"> Germany </option>      
+</select>  
+</form>  
+</center>  
+</div>  
+</body>  
+</html>  

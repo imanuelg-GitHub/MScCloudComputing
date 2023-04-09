@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+	<head>
+		<title>List Buckets and Contents</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			.dropbtn {
+  			background-color: #3498DB;
+  			color: white;
+  			padding: 16px;
+  			font-size: 16px;
+  			border: none;
+  			cursor: pointer;
+			}
+
+			.dropbtn:hover, .dropbtn:focus {
+  			background-color: #2980B9;
+			}
+
+			.dropdown {
+  			position: relative;
+  			display: inline-block;
+			}
+
+			.dropdown-content {
+  			display: none;
+  			position: absolute;
+  			background-color: #f1f1f1;
+  			min-width: 160px;
+  			overflow: auto;
+  			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  			z-index: 1;
+			}
+
+			.dropdown-content a {
+  			color: black;
+  			padding: 12px 16px;
+  			text-decoration: none;
+  			display: block;
+			}
+
+			.dropdown a:hover {background-color: #ddd;}
+
+			.show {display: block;}
+
+			body 
+			{  
+        			background-color: lightblue;  
+        	    	}  
+		</style>
+	</head>
+	<body>
+
+		<center>
+			<br/>
+			<br/>
+			<h1>List Buckets and Contents</h1>
+			<br/>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				{{s3_data}}  {{context}}
+				<br><br>
+				<input type="submit" value="Please click to list the buckets and contents" onclick="return alert('Generating...')"/>
+			</form>
+		</center>
+
+		<br/>
+		<br/>
+		
+	
+	</body>
+</html><body><table>
+    <thead>
+        <tr>
+            <th>imanuelbucket1</th>
+            <th>imanuelbucket2</th>
+            <th>imanuelbucket3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>aaa.txt</td>
+            <td>	</td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td>bbb.txt</td>
+            <td>	</td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td>myFile.txt</td>
+            <td>	</td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td>ccc.txt</td>
+            <td>	</td>
+            <td><br></td>
+        </tr>
+    </tbody>
+</table></body></html>

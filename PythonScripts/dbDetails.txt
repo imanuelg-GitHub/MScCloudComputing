@@ -1,0 +1,3 @@
+dbName=imanueldb
+MasterUserPassword=imanuelpwd
+MasterUsername=imanueluser

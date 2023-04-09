@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<head>
+		<link rel="stylesheet" href="clickable_style.css">
+		<script type = "text/javascript">
+		function myfunction() 
+		{   
+			document.querySelector('.circle').addEventListener('click', () => {
+				document.querySelector('.vertical').classList.toggle('open');
+				document.querySelector('.line-wrapper').classList.toggle('open');
+			};
+ 	        }  
+		</script>  
+	</head>
+	<body>
+	<button class="circle">
+		<div class="line-wrapper">
+			<div class="horizontal"></div>
+			<div class="vertical"></div>
+			<div class="vertical open"></div>
+		<input type = "button" onclick = "myfunction()" value = "">  
+		</div>
+		
+	</button>
+	</body>
+</html>

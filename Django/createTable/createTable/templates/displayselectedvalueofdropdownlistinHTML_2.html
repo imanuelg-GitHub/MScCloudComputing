@@ -1,0 +1,13 @@
+<select id="Country" >
+<option value="United States Of America">USA</option>
+<option value="Canada">Canada</option>
+<option value="Japan">Japan</option>
+<option value="Germany">Germany</option> </select>
+<input type="submit" onclick="myFunction() ">
+<p id="x"></p>
+<script>
+function myFunction() {
+var x = document.getElementById("Country").value;
+alert(x);
+document.getElementById("x").innerHTML = x; }
+</script>

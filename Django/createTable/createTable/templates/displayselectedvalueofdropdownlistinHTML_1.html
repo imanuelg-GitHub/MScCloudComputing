@@ -1,0 +1,31 @@
+<form name="myform">
+<select name="select" onchange="myFunction()">
+<option value="">USA</option>
+<option value="">Canada</option>
+<option value="">Japan</option>
+<option value="">Germany</option> </select>
+</form>
+<label id="country"></label>
+<script>
+
+function myFunction2() {
+document.getElementById('country').innerHTML=
+("The Selected Dropdown Value is :<b style='color:red;'>" +
+ myform.select[myform.select.selectedIndex].text+'</b>') }
+
+
+function myFunction() {
+//document.getElementById('country').innerHTML=(myform.select[myform.select.selectedIndex].text) }
+alert(myform.select[myform.select.selectedIndex].text) }
+
+
+</script>
+
+
+
+
+
+
+
+
+

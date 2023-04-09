@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <script src="JQuery.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('#btn').click(function () {
+                alert($('input[type=file]').val());
+                return false;
+
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:Button ID="btn" runat="server" Text="some" />
+    <asp:FileUpload ID="FileUpload1" runat="server" />
+    </form>
+</body>
+</html>

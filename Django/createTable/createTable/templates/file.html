@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Read and Display Text File</title>
+    </head>
+    <body>
+        <input type="file" name="rf" id="infl">
+        <div id="res"></div>
+        <script>
+            document.getElementById('infl').addEventListener('change',function(){
+                var file_reader=new FileReader();
+                file_reader.onload=function(){
+                    document.getElementById('res').textContent=file_reader.result;
+                }
+                file_reader.readAsText(this.files[0]);
+            })
+        </script>
+    </body>
+</html>

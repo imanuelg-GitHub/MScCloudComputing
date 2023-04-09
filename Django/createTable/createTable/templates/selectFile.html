@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Show File-select Fields</h1>
+
+<h3>Show a file-select field which allows only one file to be chosen:</h3>
+<form action="" method="POST">
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+</form>
+
+<br/>
+<br>
+<button onclick="show();">Show selected value</button>
+</br>
+
+
+
+
+
+<script>
+  let show = () => {
+     alert(document.getElementById("myfile").files[0].name);
+  }
+</script>
+
+</body>
+</html>

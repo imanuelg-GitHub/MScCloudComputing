@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+	<head>
+		<title>Populate table dynamically on AWS MySQL database</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<style>
+
+               .input {  
+                         margin: auto;
+                         width: 15%; 
+                         height: 15px;  
+                         padding: 1px;
+                         margin-left: 450px;
+                         margin-right: 25px;
+                       }
+
+               body {  
+        		background-color: lightblue;  
+        	    }  
+	</style>
+	</head>
+	<body>
+		<div id="res">
+		<label for="myfile">Select your table's definition file:</label>
+		<input type="file" id="infl" name="rf" onclick="tableDefinitionFunction()">
+                </div>
+		
+
+		<center>
+			<br/>
+			<br/>
+			<h1>Populate table on AWS MySQL database</h1>
+			<br/>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<textarea id="tableName" style="display: none;" name="tableName"></textarea>
+				<br/>
+				<br/>
+				{{data2}}
+				<br><br>
+                                <input type="submit" value="Please click to Populate the Table" onclick="generate()"/>
+			</form>
+                        <br/>
+                        <button onclick="myFunction()">Add Record</button>
+                        <form id="myform"></form>
+                        <br/>
+		</center>
+                <script>
+				var tableDefinition = "";
+				var fields = "";
+				var fieldsArray = ""; 
+				function tableDefinitionFunction()
+				{
+					
+					document.getElementById('infl').addEventListener('change',function()
+					{
+                				var file_reader=new FileReader();
+                				file_reader.onload=function()
+						{
+                    					document.getElementById('res').textContent=file_reader.result;
+							tableDefinition = document.getElementById('res').textContent;
+                				}
+						file_reader.readAsText(this.files[0]);
+						
+            				})
+				}
+				
+
+				function myFunction() 
+				{
+					var newDiv3 = document.createElement("br");
+  					document.body.appendChild(newDiv3);
+
+					fieldsSpaces = tableDefinition.substring(tableDefinition.indexOf("(")+1, tableDefinition.indexOf(")"));
+					fields = fieldsSpaces.replaceAll(", ", ",");
+					fieldsArray = fields.split(",");
+					for (let i = 0; i < fieldsArray.length; i++) 
+					{
+						nameAndType = fieldsArray[i].split(" ");
+						msg = nameAndType[0] + " : " + nameAndType[1];
+
+						var inputField1 = document.createElement("input");
+  						inputField1.type = "text";
+ 						inputField1.align = "center";
+						if (nameAndType[1] == "Date")
+						{
+							inputField1.setAttribute("type", "date");
+						}
+						else
+						{
+							inputField1.setAttribute('placeholder', msg);
+						}
+  						inputField1.className = 'input';
+  						document.body.appendChild(inputField1);	
+					}
+
+  					var newDiv6 = document.createElement("br");
+  					document.body.appendChild(newDiv6);
+				}
+
+				
+		
+				function generate()
+				{
+					myArr = [];
+					myTableName = "insert into " + tableDefinition.substring(tableDefinition.indexOf("table")+6, tableDefinition.indexOf("(")) + " values (";
+					var final = myTableName;
+   					var fieldName = document.getElementsByClassName('input');
+					j = 1;
+					for (var i = 0; i < fieldName.length; i++)
+					{
+						final += "'" + fieldName[i].value + "', ";
+						if (j == fieldsArray.length)
+						{
+							final = final.substring(0, final.lastIndexOf(","));
+							final += ");";
+							myArr.push(final);
+							final = myTableName;
+							j = 0;
+						}	
+						j++;
+ 						
+					}
+					
+					insertStmts = "";
+					for (var i = 0; i < myArr.length; i++)
+					{
+						insertStmts += myArr[i] + " ";
+					}
+					
+					insertStmts += "commit;"
+					document.getElementById('tableName').value = insertStmts;
+					//alert("tableName")
+					//alert(document.getElementById('tableName').value);
+				}
+
+                </script>	
+	</body>
+</html>

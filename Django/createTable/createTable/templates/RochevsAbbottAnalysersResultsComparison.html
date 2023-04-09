@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+	<head>
+		<title>View analysers results comparison and analysis</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<style>
+
+               .input {  
+                         margin: auto;
+                         width: 15%; 
+                         height: 15px;  
+                         padding: 1px;
+                         margin-left: 450px;
+                         margin-right: 25px;
+                       }
+
+               body {  
+        		background-color: lightblue;  
+        	    }  
+	</style>
+	</head>
+	<body>
+		<div id="res">
+		<label for="myfile">Select your table's definition file:</label>
+		<input type="file" id="infl" name="rf" onclick="tableDefinitionFunction()">
+                </div>
+		
+
+		<center>
+			<br/>
+			<br/>
+			<h1>View analysers results comparison and analysis</h1>
+			<br/>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<textarea id="tableName" style="display: none;" name="tableName"></textarea>
+				<br/>
+				<br/>
+				{{data6}}
+				<br><br>
+                                <input type="submit" value="Please click to View the Results" onclick="generate()"/>
+			</form>
+                        <br/>
+		</center>
+                <script>
+				var tableDefinition = "";
+				var fields = "";
+				var fieldsArray = ""; 
+				function tableDefinitionFunction()
+				{
+					
+					document.getElementById('infl').addEventListener('change',function()
+					{
+                				var file_reader=new FileReader();
+                				file_reader.onload=function()
+						{
+                    					document.getElementById('res').textContent=file_reader.result;
+							tableDefinition = document.getElementById('res').textContent;
+                				}
+						file_reader.readAsText(this.files[0]);
+						
+            				})
+				}
+				
+		
+				function generate()
+				{
+					myTableName = tableDefinition.substring(tableDefinition.indexOf("table")+6, tableDefinition.indexOf("("));
+					document.getElementById('tableName').value = myTableName;
+				}
+
+                </script>	
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p> Enter your database name </p>
+<input type="text" name="databaseName" value="">
+<br/>
+<br>
+<button onclick="show();">Show textbox value</button>
+</br>
+
+<br/>
+<br/>
+<h3>Show a file-select field which allows only one file to be chosen:</h3>
+<p> Select your filename name </p>
+<input type="file" name="myfile" value="">
+<br>
+<button onclick="upload();">Show file</button>
+</br>
+
+
+
+
+
+
+
+<script>
+  let show = () => {     
+     alert(document.getElementsByName('databaseName')[0].value);
+  }
+</script>
+
+
+<script>
+  let upload = () => {     
+     alert(document.getElementsByName('myfile')[0].value);
+  }
+</script>
+
+
+
+</body>
+</html>

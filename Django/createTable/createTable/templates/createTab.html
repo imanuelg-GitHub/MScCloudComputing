@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+	<head>
+		<title>Create table dynamically on AWS MySQL database</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<style>
+
+               .input {  
+                         margin: auto;
+                         width: 15%; 
+                         height: 15px;  
+                         padding: 1px;
+                         margin-left: 450px;
+                         margin-right: 25px;
+                       }
+
+               body {  
+        		background-color: lightblue;  
+        	    }  
+	</style>
+	</head>
+	<body>
+		<center>
+			<br/>
+			<br/>
+			<h1>Create table on AWS MySQL database</h1>
+			<br/>
+			<form action="" method="POST">
+				{% csrf_token %}
+                                <p><b>Please enter table name:</b></p>
+				<textarea id="tableName" rows="2" cols="25" style="border: solid 4px blue;" name="tableName"></textarea>
+				<br/>
+				<br/>
+				{{data1}}
+				<br><br>
+                                <input type="submit" value="Please click to Create the Table" onclick="generate()"/>
+			</form>
+                        <br/>
+                        <button onclick="myFunction()">Add Field</button>
+                        <form id="myform"></form>
+                        <br/>
+		</center>
+                <script>
+				function myFunction() 
+				{
+  					var newDiv3 = document.createElement("br");
+  					document.body.appendChild(newDiv3);  
+
+  					var inputField = document.createElement("input");
+  					inputField.type = "text";
+ 					inputField.align = "center";
+  					inputField.setAttribute('placeholder', 'Enter field name');
+  					inputField.className = 'input';
+  					document.body.appendChild(inputField);
+
+  					var newDiv4 = document.getElementById("myform");
+  					var select = document.createElement("select");
+  					select.className = 'select';
+  					document.body.appendChild(select);
+
+  					var newDiv5 = document.getElementById("select");
+  					var option = document.createElement("option");
+  					option.value = "";
+  					option.innerHTML = "-- Select type --";
+  					select.appendChild(option);
+
+  					var newDiv5 = document.getElementById("select");
+  					var option = document.createElement("option");
+  					option.value = "Text";
+  					option.innerText = "Text";
+  					option.innerHTML = "Text";
+  					select.appendChild(option);
+
+  					var newDiv5 = document.getElementById("select");
+  					var option = document.createElement("option");
+  					option.value = "Numeric";
+  					option.innerText = "Numeric";
+  					option.innerHTML = "Numeric";
+  					select.appendChild(option);
+
+  					var newDiv5 = document.getElementById("select");
+  					var option = document.createElement("option");
+  					option.value = "Date";
+  					option.innerText = "Date";
+  					option.innerHTML = "Date";
+  					select.appendChild(option);
+
+  					var newDiv6 = document.createElement("br");
+  					document.body.appendChild(newDiv6);
+				}
+		
+				function generate()
+				{
+                                        let m = new Map();
+					
+   					var fieldName = document.getElementsByClassName('input');
+   					for (var i = 0; i < fieldName.length; i++)
+   					{
+      						m.set(fieldName[i].value, 0);
+   					}
+
+                                        var inputType = document.getElementsByClassName('select');
+   					for (var i = 0; i < inputType.length; i++)
+   					{
+      						m.set(fieldName[i].value, inputType[i].value);
+   					}
+
+                                        var fieldsStr = "create table " + document.getElementById('tableName').value + "(";
+        				for (i of m.entries()) 
+					{
+                                                fieldsStr += i[0] + " " + i[1] + ",";
+        				}
+                                        fieldsStr = fieldsStr.substring(0,fieldsStr.length-1);  // remove last ,
+                                        fieldsStr += ");";
+                                        document.getElementById('tableName').value = fieldsStr;
+                                        //alert(document.getElementById('tableName').value);
+				}
+                </script>	
+	</body>
+</html>

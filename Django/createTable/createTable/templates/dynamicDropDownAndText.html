@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drop down and TextArea</title>  
+  </head>
+  <h2 style="display: inline; padding-left: 10px;"></h2>
+  <body>    
+  </body>
+
+<label>
+
+  <input placeholder="Enter some text" name="name" />
+  
+  <select class="ice-cream" name="ice-cream">
+    <option value="">Select One …</option>
+    <option value="chocolate">Chocolate</option>
+    <option value="sardine">Sardine</option>
+    <option value="vanilla">Vanilla</option>
+  </select>
+  
+
+  <center>
+  <button onclick="generate()">Generate</button>
+  </center>
+</label>
+
+<p hidden id="textarea"></p>
+<p hidden id="dropdown"></p>
+
+
+<script>
+
+		//const selectElement = document.querySelector('.ice-cream');
+		//selectElement.addEventListener('change', (event) => 
+		//{ 
+		//	const result = document.querySelector('.result');
+		//	result.textContent = `${event.target.value}`;
+		//});
+                document.querySelector('.ice-cream').addEventListener("change", e => {dropdown.textContent = e.target.value;})
+
+		//const input = document.querySelector('input');
+		//const log = document.getElementById('log');
+		//input.addEventListener('change', updateValue);
+		//function updateValue(e) 
+		//{
+  		//	log.textContent = e.target.value;
+		//}
+                document.querySelector('input').addEventListener('change', e => {textarea.textContent = e.target.value;})
+		function generate()
+        	{
+			alert(textarea.textContent);
+                        alert(dropdown.textContent); 
+		}
+
+
+</script>
+
+
+</html>
